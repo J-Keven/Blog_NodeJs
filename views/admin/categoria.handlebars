@@ -1,0 +1,18 @@
+
+<h2>Lista de categorias: </h2>
+<hr>
+<a href="/admin/categoria/add">
+    <button class="btn btn-success">Adicionar Categoria</button>
+    <hr>
+</a>
+<div id='Style'>
+{{#each categorias}}
+   <div class="card border-primary mb-4" style="max-width: 18rem;">
+        <div class="card-header">{{name}}</div>
+        <div class="card-body text-primary">
+            <h5 class="card-title">{{slug}}</h5>
+            <p class="card-text">Data da publucação {{date}}</p>
+        </div>
+    </div>
+{{/each}}
+</div>

@@ -1,0 +1,18 @@
+
+<div class="card">
+  <div class="card-body">
+    <h2>Nova Categoria</h2>
+  </div>
+  <div class="card-body">
+    <form method="POST" action="/admin/categoria/new">
+    <label for="name">Nome:</label>
+        <input type="text" name="name" id="name" placeholder="Nome da Categoria" class="form-control">
+    <label for="slug">Slag: </label>
+        <input type="text" name="slug" id="slug" placeholder="Slug da Categoria" class="form-control">
+    <button type="submit" class="btn btn-primary mt-3">Criar Categoria</button>
+    </form>
+  </div>
+</div>
+{{#each erros}}
+  <div class="alert alert-danger mt-3">{{texto}}</div>
+{{/each}}
