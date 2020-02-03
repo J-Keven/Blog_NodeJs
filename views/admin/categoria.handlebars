@@ -5,14 +5,16 @@
     <button class="btn btn-success">Adicionar Categoria</button>
     <hr>
 </a>
-<div id='Style'>
+
 {{#each categorias}}
-   <div class="card border-primary mb-4" style="max-width: 18rem;">
+   <div class="card border-primary mb-4">
         <div class="card-header">{{name}}</div>
         <div class="card-body text-primary">
             <h5 class="card-title">{{slug}}</h5>
-            <p class="card-text">Data da publucação {{date}}</p>
+            <p class="card-text">Data da publicação {{date}}</p>
+       <a href="/admin/categoria/edit/{{id}}"> 
+           <button type="button" class="btn btn-secondary mt-3">Editar</button>
+       </a>
         </div>
     </div>
 {{/each}}
-</div>

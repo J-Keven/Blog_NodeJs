@@ -16,6 +16,13 @@ router.get('/categoria/add', (req, res)=>{
     res.render('admin/addCategoria')
 })
 
+router.post('/categoria/edition/:id', (req, res)=>{
+
+    console.log(req.params, req.body)
+    res.send("Editado")
+})
+router.get('/categoria/edit/:_id', reloadCategorias.reloadId)
+
 router.get('/categoria', reloadCategorias.reload)
 
 router.post('/categoria/new',categoriaCOntroller.storeCatergoria)
