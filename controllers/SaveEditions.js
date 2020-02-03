@@ -6,7 +6,6 @@ module.exports = {
         const { name, slug } = req.body
         const erros = validationIsParams(name, slug)
         const { id } = req.params
-        console.log(id)
         if(erros.length > 0){
             res.render('admin/editCategoria', {erros: erros, CategoriaId: {
                 id: id,

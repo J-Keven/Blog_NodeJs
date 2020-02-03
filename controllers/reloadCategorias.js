@@ -14,14 +14,14 @@ module.exports = {
     },
 
     async reloadId(req, res){
-        CategoriaId = await categoria.findById(req.params)
-        res.render("admin/editCategoria",{
-            CategoriaId: {
+        await categoria.findById(req.params).then((CategoriaId)=>{
+            res.render("admin/editCategoria",{
+                CategoriaId: {
                     id: CategoriaId._id, 
                     name: CategoriaId.name, 
                     slug: CategoriaId.slug
                 }
-            }
-        )
+            })
+        })
     }
 }
