@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-body">
+        <h2>Nova Categoria</h2>
+    </div>
+    <div class="card-body">
+        <form action="/admin/posts/new" method="POST">
+            <label for="title" class="mt-2">Titulo </label>
+                <input type="text" class="form-control" name="title" placeholder="Nome do titulo">
+            <label for="slug" class="mt-2">Slug</label>
+                <input type="text" name="slug" class="form-control" placeholder="Nome do Slug">
+            <label for="description" class="mt-2">Descrição</label>
+                <input type="text" name='description' class="form-control" placeholder="Descrição para o post">
+            <label for="content" class="mt-2">Conteúdo</label>
+                <textarea name="content" class="form-control" placeholder="Conteúdo do post"></textarea>
+            <label for="categorie">Categoria</label>
+                <select name="categorie" class="custom-select">
+                    {{#each categories}}
+                        <option value={{id}}>{{name}}</option>
+                    {{else}}
+                        <option value="0">Nenhuma categoria cadastrada</option>
+                    {{/each}}
+                </select>
+            <button type="submit" class='btn btn-success mt-3'>Adcionar Post</button>
+        </form>
+    </div>
+</div>
