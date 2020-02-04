@@ -7,7 +7,7 @@
 </a>
 
 {{#each categorias}}
-   <div class="card border-primary mb-4">
+   <div class="card border-primary mt-4">
         <div class="card-header">{{name}}</div>
         <div class="card-body text-primary">
             <h5 class="card-title">{{slug}}</h5>
@@ -16,10 +16,14 @@
            <button type="button" class="btn btn-primary mt-3">Editar</button>
        </a>
 
-       <a href="/admin/categoria/delete/{{id}}"> 
-           <button type="button" class="btn btn-danger mt-3">Deletar</button>
-       </a>
-
+       <form action="/admin/categoria/delete/" method="post">
+            <input type="hidden" name="id" value={{id}}>
+             <button type="submit" class="btn btn-danger mt-3">Deletar</button>
+       </form>
         </div>
+    </div>
+{{else}}
+    <div class="card border-primary mt-3">
+        <h4>Nenhuma categoria registrada!</h4>
     </div>
 {{/each}}

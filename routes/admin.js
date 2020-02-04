@@ -18,7 +18,7 @@ router.get('/categoria/add', (req, res)=>{
     res.render('admin/addCategoria')
 })
 
-router.get('/categoria/delete/:id', deleteCategoria.delete)
+router.post('/categoria/delete/', deleteCategoria.delete)
 
 router.post('/categoria/edition/:id', saveEdition.Save)
 
