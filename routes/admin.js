@@ -6,14 +6,30 @@ const reloadCategorias = require('../controllers/reloadCategorias')
 const saveEdition = require("../controllers/SaveEditions")
 const deleteCategoria = require('../controllers/deleteCategorie')
 const postSave = require('../controllers/postSave')
+const reloadPosts = require('../controllers/reloadPosts')
+const deletePost = require('../controllers/deleteposts')
 
 router.get('/',(req, res)=>{
     res.render('admin/index')
 })
 
 router.get('/posts', (req, res)=>{
-    res.render('admin/posts')
+    reloadPosts.reloadAll().then((posts) =>{
+        res.render('admin/posts', {posts: posts.map( post => {
+            return {
+                id: post._id,
+                title: post.title,
+                slug: post.slug,
+                description: post.description,
+                content: post.content,
+                categorie: post.categorie.name,
+                date: post.date
+            }
+        })})
+    })
 })
+
+router.post('/posts/delete', deletePost.deletePost)
 
 router.get('/posts/add', (req, res)=>{
     reloadCategorias.reload().then((categories)=>{

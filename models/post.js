@@ -7,7 +7,7 @@ const postSchema = new mongoose.Schema({
     content: String,
     categorie:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Categoria"
+        ref: 'Categoria',
     },
     date: {
         type: Date,

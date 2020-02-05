@@ -4,3 +4,29 @@
     <button class="btn btn-success">Adicionar post</button>
     <hr>
 </a>
+
+{{#each posts}}
+    <div class="card border-primary mb-3" style="max-width: 40rem;">
+        <div class="card-header">{{title}}</div>
+        <div class="card-body text-primary">    
+            <h5 class="card-title">{{description}}</h5>
+            <p class="card-text">{{content}}</p>
+            <small class="card-text text-dark mt-2">
+                Categoria: {{categorie}}
+                <br>
+                slug: {{slug}}
+                <br>
+                Data: {{date}}
+
+            </small>
+        </div>
+       <form action="/admin/posts/delete" method="POST">
+           <input type="hidden" name="id" value={{id}}>
+           <button type="submit" class="btn btn-danger" style="margin: 10px;">Deletar</button>
+       </form>
+    </div>
+{{else}}
+    <div class="card border-primary mt-3">
+        <h4>Nenhuma categoria registrada!</h4>
+    </div>
+{{/each}}

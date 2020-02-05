@@ -1,17 +1,26 @@
+
+{{#each err}}
+    <div class="alert alert-danger mt-3">{{text}}
+        <a href='/admin/categoria/add'>
+            <button type="button" class="btn btn-primary ">Cadastrar Categoria</button>
+        </a>
+    </div>
+{{/each}}
+
 <div class="card">
-    <div class="card-body">
-        <h2>Nova Categoria</h2>
+    <div class="card-body ">
+        <h2>Novo Post</h2>
     </div>
     <div class="card-body">
         <form action="/admin/posts/new" method="POST">
             <label for="title" class="mt-2">Titulo </label>
-                <input type="text" class="form-control" name="title" placeholder="Nome do titulo">
+                <input type="text" class="form-control" name="title" placeholder="Nome do titulo" required>
             <label for="slug" class="mt-2">Slug</label>
-                <input type="text" name="slug" class="form-control" placeholder="Nome do Slug">
+                <input type="text" name="slug" class="form-control" placeholder="Nome do Slug" required>
             <label for="description" class="mt-2">Descrição</label>
-                <input type="text" name='description' class="form-control" placeholder="Descrição para o post">
+                <input type="text" name='description' class="form-control" placeholder="Descrição para o post" required>
             <label for="content" class="mt-2">Conteúdo</label>
-                <textarea name="content" class="form-control" placeholder="Conteúdo do post"></textarea>
+                <textarea name="content" class="form-control" placeholder="Conteúdo do post" required></textarea>
             <label for="categorie">Categoria</label>
                 <select name="categorie" class="custom-select">
                     {{#each categories}}
