@@ -8,16 +8,17 @@
 
 <div class="card">
     <div class="card-body ">
-        <h2>Edite Post</h2>
+        <h2>Edição de Post</h2>
     </div>
     <div class="card-body">
-        <form action="/admin/posts/saveEditions/{{post._id}}" method="POST">
+        <form action="/admin/posts/saveEditions" method="POST">
+            <input type="hidden" name="_id" value="{{post._id}}">
             <label for="title" class="mt-2">Titulo </label>
-                <input type="text" class="form-control" name="title" value={{post.title}} placeholder="Nome do titulo" required>
+                <input type="text" class="form-control" name="title" value="{{post.title}}" placeholder="Nome do titulo" required>
             <label for="slug" class="mt-2">Slug</label>
-                <input type="text" name="slug" class="form-control" value={{post.slug}} placeholder="Nome do Slug" required>
+                <input type="text" name="slug" class="form-control" value="{{post.slug}}" placeholder="Nome do Slug" required>
             <label for="description" class="mt-2">Descrição</label>
-                <input type="text" name='description' class="form-control" value={{post.description}} placeholder="Descrição para o post" required>
+                <input type="text" name='description' class="form-control" value="{{post.description}}" placeholder="Descrição para o post" required>
             <label for="content" class="mt-2">Conteúdo</label>
                 <textarea name="content" class="form-control"  placeholder="Conteúdo do post" required>{{post.content}}</textarea>
             <label for="categorie">Categoria</label>
@@ -28,7 +29,7 @@
                         <option value="0">Nenhuma categoria cadastrada</option>
                     {{/each}}
                 </select>
-            <button type="submit" class='btn btn-success mt-3'>Adcionar Post</button>
+            <button type="submit" class='btn btn-success mt-3'>Salvar Edições</button>
         </form>
     </div>
 </div>

@@ -48,7 +48,7 @@ router.post('/posts/delete', deletePost.deletePost)
 
 router.get('/posts/edit/:_id', reloadPosts.reloadId)
 
-router.post('/posts/saveEditions/:_id', postSave.saveEditionsPost)
+router.post('/posts/saveEditions', postSave.saveEditionsPost)
 
 router.get('/categoria', (req, res)=>{
     reloadCategorias.reload().then((categories)=>{

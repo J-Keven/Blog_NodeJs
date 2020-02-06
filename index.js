@@ -10,6 +10,7 @@ const adminRouters = require('./routes/admin')
 const path = require('path')
 
 const app = express()
+const PORT = 3000
 
 mongoose.connect("mongodb+srv://keven:jhonas4313@cluster0-vvpyt.mongodb.net/test?retryWrites=true&w=majority", {
     useNewUrlParser:true,
@@ -51,6 +52,6 @@ app.use(express.static(path.join(__dirname,'public')))
 app.use('/admin', adminRouters)
 
 // definindo a porta
-app.listen(3333, ()=>{
-    console.log("O serever esta rodando no endereço: http://localhost:3333")
+app.listen(PORT, ()=>{
+    console.log(`O serever esta rodando no endereço: http://localhost:${PORT}`)
 })

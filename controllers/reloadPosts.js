@@ -23,7 +23,13 @@ module.exports = {
                     }
                 })
             })
+            }).catch((err)=>{
+                req.flash("err_msg", "houve um erro ao carregar os dados do post!")
+                res.rendirect("/admin/posts")    
             })
+        }).catch((err) => {
+            req.flash("err_msg", "houve um erro ao listar as categorias!")
+            res.rendirect("/admin/posts")
         })
         
     }

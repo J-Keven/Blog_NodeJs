@@ -32,13 +32,13 @@ module.exports = {
         }
     },
     async saveEditionsPost(req, res){
-        const { title, slug, description, content, categorie } = req.body
+        const { _id, title, slug, description, content, categorie } = req.body
         const err = validationPosts(categorie)
         if(err.length > 0){
             res.render('admin/addPost',{err: err})
         }
-        else{
-            Post.findOne(req.params).then((post) =>{
+        else{   
+            Post.findOne({_id:_id}).then((post) =>{
                 post.title = title
                 post.slug = slug
                 post.description = description
