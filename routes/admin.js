@@ -10,7 +10,20 @@ const reloadPosts = require('../controllers/reloadPosts')
 const deletePost = require('../controllers/deleteposts')
 
 router.get('/',(req, res)=>{
-    res.render('admin/index')
+    reloadPosts.reloadAll().then((posts) => {
+        console.log(posts)
+        res.render('index', {
+            posts: posts.map(item => {
+                return {
+                    title: item.title,
+                    description: item.description,
+                    content: item.content,
+                }
+            })
+        })
+    }).catch((err) => {
+
+    })
 })
 
 router.get('/posts', (req, res)=>{
@@ -74,4 +87,11 @@ router.post('/categoria/edition/:id', saveEdition.Save)
 
 router.post('/categoria/delete/', deleteCategoria.delete)
 
+router.get('/cadastre-se', (req, res) =>{
+    res.send("Paina de cadastro")
+})
+
+router.get('/login', (req, res) =>{
+    res.send('Pagina de login')
+})
 module.exports = router

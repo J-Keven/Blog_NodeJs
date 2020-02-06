@@ -53,5 +53,5 @@ app.use('/admin', adminRouters)
 
 // definindo a porta
 app.listen(PORT, ()=>{
-    console.log(`O serever esta rodando no endereço: http://localhost:${PORT}`)
+    console.log(`O serever esta rodando no endereço: http://localhost:${PORT}/admin`)
 })

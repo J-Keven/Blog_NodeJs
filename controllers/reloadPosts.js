@@ -13,8 +13,7 @@ module.exports = {
                     title: post.title,
                     slug: post.slug,
                     description: post.description,
-                    content: post.content
-                    
+                    content: post.content  
                 },
                 categorie: categories.map( item => {
                     return {
