@@ -20,6 +20,11 @@
 
             </small>
         </div>
+        {{!-- falta adicionar a rota --}}
+       <a href="/admin/posts/edit/{{id}}">
+           <button type="button" class="btn btn-primary" style="margin: 10px">Editar</button>
+       </a>
+
        <form action="/admin/posts/delete" method="POST">
            <input type="hidden" name="id" value={{id}}>
            <button type="submit" class="btn btn-danger" style="margin: 10px;">Deletar</button>

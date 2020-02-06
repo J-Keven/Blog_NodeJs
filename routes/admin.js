@@ -29,21 +29,26 @@ router.get('/posts', (req, res)=>{
     })
 })
 
-router.post('/posts/delete', deletePost.deletePost)
 
 router.get('/posts/add', (req, res)=>{
     reloadCategorias.reload().then((categories)=>{
         res.render('admin/addPost', {categories: categories.map(item=>{
             return {id: item._id, name: item.name, slug: item.slug, date: item.date}
-            })
         })
-    }).catch((err)=>{
-        req.flash("err_msg", "Houve um erro ao carregar as categorias, tente novamente!!")
-        res.redirect('/admin')
     })
+}).catch((err)=>{
+    req.flash("err_msg", "Houve um erro ao carregar as categorias, tente novamente!!")
+    res.redirect('/admin')
+})
 })
 
 router.post('/posts/new', postSave.storePost)
+
+router.post('/posts/delete', deletePost.deletePost)
+
+router.get('/posts/edit/:_id', reloadPosts.reloadId)
+
+router.post('/posts/saveEditions/:_id', postSave.saveEditionsPost)
 
 router.get('/categoria', (req, res)=>{
     reloadCategorias.reload().then((categories)=>{
