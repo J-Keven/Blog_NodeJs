@@ -1,8 +1,17 @@
-<div class="jumbotron">
+{{#each erros}}
+  <div class="alert alert-danger mt-3">{{texto}}</div>
+{{/each}}
+
+<form class="form-inline my-2 my-lg-0" style="margin-left: 798px;" method="post" action="/admin/SearchPosts">
+    <input class="form-control mr-sm-2" type="search" placeholder="Posts por Categoria" aria-label="Search" name="slug">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+<div class="jumbotron mt-3">
   <h1 class="display-4">Bem vindo ao BlogTec!</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <p class="lead">Este é um simples Blog desenvolvido com Node.Js, MongoDB, Express e outras Tecnologias.</p>
   <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <p>Aqui voce vai encontrar diversas noticias sobre computação!</p>
   <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
 </div>
 
@@ -14,6 +23,9 @@
     <div class="card-body">
         <h3 class='card-title'>{{title}}</h3>
         <p>{{description}}</p>
+        <a href="/admin/leiamais/{{_id}}">
+            <button type="button" class="btn btn-success">Leia mais</button>
+        </a>
     </div>
 </div>
 

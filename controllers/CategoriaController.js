@@ -12,7 +12,7 @@ module.exports = {
         else{
             await categoria.create({
                 name,
-                slug,
+                slug: slug.toLowerCase(),
             }).then(()=>{ 
                 req.flash('success_msg',"Categoria criada com sucesso!" )
                 res.redirect('/admin/categoria')
