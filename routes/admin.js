@@ -11,21 +11,8 @@ const deletePost = require('../controllers/deleteposts')
 const Posts = require('../models/post')
 const categoria = require('../models/Categora')
 
-router.get('/',(req, res)=>{
-    reloadPosts.reloadAll().then((posts) => {
-        res.render('index', {
-            posts: posts.map(item => {
-                return {
-                    _id: item._id,
-                    title: item.title,
-                    description: item.description,
-                    content: item.content,
-                }
-            })
-        })
-    }).catch((err) => {
-
-    })
+router.get('/', (req, res) =>{
+    
 })
 
 router.get('/posts', (req, res)=>{
@@ -89,44 +76,6 @@ router.post('/categoria/edition/:id', saveEdition.Save)
 
 router.post('/categoria/delete/', deleteCategoria.delete)
 
-router.get('/cadastre-se', (req, res) =>{
-    res.send("Paina de cadastro")
-})
 
-router.get('/login', (req, res) =>{
-    res.render('user/login')
-})
 
-router.get('/leiamais/:_id', (req, res)=>{
-    Posts.findOne(req.params).populate('categorie').then((post) =>{
-        res.render('admin/PostSaibaMais', {post: {
-            title: post.title,
-            slug: post.slug,
-            description: post.description,
-            content: post.content,
-            categorie: post.categorie.name,
-            date: post.date
-        }})
-    }).catch()
-})
-
-router.post('/SearchPosts', (req, res) =>{
-    categoria.findOne({slug: req.body.slug.toLowerCase()}).then((categorias) => {
-        if(categorias){         
-            Posts.find({categorie: categorias._id}).then((posts) =>{
-                res.render('categorias/index', {posts: posts.map(item =>{
-                    return {
-                        _id: item._id,
-                        title: item.title,
-                        description: item.description
-                    }
-                })})
-            })
-        }
-        else{
-            req.flash('err_msg', "Esta Categoria nao existe")
-            res.redirect('/admin')
-        }
-    })
-})
 module.exports = router
