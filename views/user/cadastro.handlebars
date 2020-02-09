@@ -1,18 +1,24 @@
 <h3>
   Novo Usuário
-</h3>
-<div class="card mt-3" style="background-color: beige;">
-  <div class="card-body">
-    <form action="" method="">
-      <label for="name" class='mt-2'>Nome:</label>
-        <input type="text" name="name"class="form-control" placeholder="Infome o seu name" aria-label="Username" aria-describedby="addon-wrapping" required>
-      <label for="email" class='mt-2'>Email:</label>
-         <input type="email" class="form-control" name="email" placeholder="exemplo@exemplo.com" required>
-      <label for="password"class='mt-2'>Senha:</label>
-       <input type="password" class="form-control" name="password" placeholder="Informe uma senha" required>
-      <label for="password2"class='mt-2'>Confime sua senha:</label>
-       <input type="password" class="form-control" name="password2" placeholder="Infome a senha digitada antes" required>
-      <button type="submit" class="btn btn-primary mt-3">Cadastrar-se</button>
-    </form>
+</h3> 
+
+ <div class="card mt-3" style="background-color: beige;">
+    <div class="card-body">
+      <form action="/user/cadastro" method="POST">
+        <label for="name" class='mt-2'>Nome:</label>
+          <input type="text" name="name"class="form-control" placeholder="Infome o seu name" aria-label="Username" aria-describedby="addon-wrapping" required>
+        <label for="email" class='mt-2'>Email:</label>
+          <input type="email" class="form-control" name="email" placeholder="exemplo@exemplo.com" required>
+        <label for="password"class='mt-2'>Senha:</label>
+        <input type="password" class="form-control" name="password" placeholder="Informe uma senha" required>
+        <label for="password2"class='mt-2'>Confime sua senha:</label>
+        <input type="password" class="form-control" name="password2" placeholder="Infome a senha digitada antes" required>
+        <button type="submit" class="btn btn-primary mt-3">Cadastrar-se</button>
+        {{#each erros}}
+          <div class="alert alert-danger mt-3">{{text}}</div>
+      {{else}}
+ 
+      {{/each}}
+      </form>
+    </div>
   </div>
-</div>

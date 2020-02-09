@@ -12,7 +12,7 @@ const Posts = require('../models/post')
 const categoria = require('../models/Categora')
 
 router.get('/', (req, res) =>{
-    
+    res.send("Testando rota!")
 })
 
 router.get('/posts', (req, res)=>{

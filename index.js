@@ -5,13 +5,15 @@ const bodyParser = require('body-parser');
 const handleBars = require('express-handlebars');
 const session = require('express-session')
 const flash = require('connect-flash')
+const passport = require("passport")
+
+require('./config/auth')(passport)
 
 const adminRouters = require('./routes/admin')
 const usersRouters = require('./routes/user')
 const reloadPosts = require('./controllers/reloadPosts')
 const categoria = require('./models/Categora')
 const Posts = require('./models/post')
-
 const path = require('path')
 
 const app = express()
@@ -32,13 +34,15 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }))
-
+app.use(passport.initialize())
+app.use(passport.session())
 app.use(flash())
 
 // middleware
 app.use((req, res, next)=>{
     res.locals.success_msg = req.flash('success_msg')
     res.locals.err_msg = req.flash('err_msg')
+    res.locals.error = req.flash('error')
     next()
 })
 
