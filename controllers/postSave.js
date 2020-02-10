@@ -23,6 +23,7 @@ module.exports = {
                 description,
                 content,
                 categorie,
+                user: req.user.name
             }).then(()=>{
                 req.flash("success_msg", "Post cadastrar com suucesso!")
                 res.redirect('/admin/posts')

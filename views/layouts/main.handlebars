@@ -17,17 +17,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/admin/categoria">Categoria</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="/admin/posts">Post</a>
             </li>
-            <li class="nav-item" style="margin-left: 800px;">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/categoria">Categoria</a>
+            </li>
+            {{#if login}}
+                <li class="nav-item" style="margin-left: 950px;">
+                    <a class="nav-link" href="/user/sair" tabindex="-1" aria-disabled="true">Sair</a>
+                </li>
+            {{else}}
+                <li class="nav-item" style="margin-left: 840px;">
                     <a class="nav-link" href="/user/login" tabindex="-1" aria-disabled="true">Login</a>
                 </li>
                 <li class="nav-item" style=>
                     <a class="nav-link" href="/user/cadastro" tabindex="-1" aria-disabled="true">Cadastrar-se</a>
                 </li>
+            {{/if}}            
             </ul>
         </div>
     </nav>

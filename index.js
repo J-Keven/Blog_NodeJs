@@ -17,7 +17,6 @@ const Posts = require('./models/post')
 const path = require('path')
 
 const app = express()
-const PORT = 3000
 
 mongoose.connect("mongodb+srv://keven:jhonas4313@cluster0-vvpyt.mongodb.net/test?retryWrites=true&w=majority", {
     useNewUrlParser:true,
@@ -43,6 +42,7 @@ app.use((req, res, next)=>{
     res.locals.success_msg = req.flash('success_msg')
     res.locals.err_msg = req.flash('err_msg')
     res.locals.error = req.flash('error')
+    res.locals.login = req.user || null
     next()
 })
 
@@ -104,7 +104,8 @@ app.get('/leiamais/:_id', (req, res)=>{
             description: post.description,
             content: post.content,
             categorie: post.categorie.name,
-            date: post.date
+            date: post.date,
+            userName: post.user
         }})
     }).catch()
 })
@@ -114,6 +115,7 @@ app.use('/user', usersRouters)
 
 // definindo a porta
 
+const PORT = ( process.env.PORT || 3000 )
 app.listen(PORT, ()=>{
     console.log(`O serever esta rodando no endereço: http://localhost:${PORT}`)
 })

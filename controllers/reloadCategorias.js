@@ -10,7 +10,7 @@ module.exports = {
                 CategoriaId: {
                     id: CategoriaId._id, 
                     name: CategoriaId.name, 
-                    slug: CategoriaId.slug
+                    slug: CategoriaId.slug,
                 }
             })
         })

@@ -10,12 +10,13 @@ const reloadPosts = require('../controllers/reloadPosts')
 const deletePost = require('../controllers/deleteposts')
 const Posts = require('../models/post')
 const categoria = require('../models/Categora')
+const { eAdmin } = require('../helpers/eAdmin')
 
-router.get('/', (req, res) =>{
+router.get('/', eAdmin, (req, res) =>{
     res.send("Testando rota!")
 })
 
-router.get('/posts', (req, res)=>{
+router.get('/posts',  eAdmin, (req, res)=>{
     reloadPosts.reloadAll().then((posts) =>{
         res.render('admin/posts', {posts: posts.map( post => {
             return {
@@ -25,14 +26,15 @@ router.get('/posts', (req, res)=>{
                 description: post.description,
                 content: post.content,
                 categorie: post.categorie.name,
-                date: post.date
+                date: post.date,
+                userName: post.user
             }
         })})
     })
 })
 
 
-router.get('/posts/add', (req, res)=>{
+router.get('/posts/add',  eAdmin, (req, res)=>{
     reloadCategorias.reload().then((categories)=>{
         res.render('admin/addPost', {categories: categories.map(item=>{
             return {id: item._id, name: item.name, slug: item.slug, date: item.date}
@@ -44,18 +46,18 @@ router.get('/posts/add', (req, res)=>{
 })
 })
 
-router.post('/posts/new', postSave.storePost)
+router.post('/posts/new',  eAdmin, postSave.storePost)
 
-router.post('/posts/delete', deletePost.deletePost)
+router.post('/posts/delete',  eAdmin, deletePost.deletePost)
 
-router.get('/posts/edit/:_id', reloadPosts.reloadId)
+router.get('/posts/edit/:_id',  eAdmin, reloadPosts.reloadId)
 
-router.post('/posts/saveEditions', postSave.saveEditionsPost)
+router.post('/posts/saveEditions',  eAdmin, postSave.saveEditionsPost)
 
-router.get('/categoria', (req, res)=>{
+router.get('/categoria',  eAdmin, (req, res)=>{
     reloadCategorias.reload().then((categories)=>{
             res.render('admin/categoria', {categories: categories.map( item => {
-                return {id: item._id, name: item.name, slug: item.slug, date: item.date}
+                return {id: item._id, name: item.name, slug: item.slug, date: item.date, userName: item.user}
                 })
             })
         }).catch((err)=>{
@@ -64,17 +66,17 @@ router.get('/categoria', (req, res)=>{
         })
 })
 
-router.get('/categoria/add', (req, res)=>{
+router.get('/categoria/add', eAdmin, (req, res) => {
     res.render('admin/addCategoria')
 })
 
-router.post('/categoria/new',categoriaCOntroller.storeCatergoria)
+router.post('/categoria/new',  eAdmin, categoriaCOntroller.storeCatergoria)
 
-router.get('/categoria/edit/:_id', reloadCategorias.reloadId)
+router.get('/categoria/edit/:_id',  eAdmin, reloadCategorias.reloadId)
 
-router.post('/categoria/edition/:id', saveEdition.Save)
+router.post('/categoria/edition/:id',  eAdmin, saveEdition.Save)
 
-router.post('/categoria/delete/', deleteCategoria.delete)
+router.post('/categoria/delete/',  eAdmin, deleteCategoria.delete)
 
 
 

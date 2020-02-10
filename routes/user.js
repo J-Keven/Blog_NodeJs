@@ -68,4 +68,9 @@ router.post('/cadastro', (req, res) => {
     })
 })
 
+router.get('/sair', (req, res) => {
+    req.logOut()
+    res.redirect('/')
+})
+
 module.exports = router
