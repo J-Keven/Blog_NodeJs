@@ -13,7 +13,7 @@ const categoria = require('../models/Categora')
 const { eAdmin } = require('../helpers/eAdmin')
 
 router.get('/', eAdmin, (req, res) =>{
-    res.send("Testando rota!")
+    res.redirect('/user/ligin')
 })
 
 router.get('/posts',  eAdmin, (req, res)=>{
